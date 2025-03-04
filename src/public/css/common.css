@@ -1,0 +1,25 @@
+body {
+    font-family: "Inika", cursive;
+    color: #8b7969;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.header {
+    background: #ffffff;
+}
+
+.header__inner {
+    margin: 0 auto;
+    padding: 10px 15px;
+    text-align: center;
+    border: 1px solid #EBEBEA;
+    max-width: 1512px;
+}
+
+.header__logo {
+    text-decoration: none;
+    color: #8b7969;
+    font-weight: normal;
+    font-size: 32px;
+}
