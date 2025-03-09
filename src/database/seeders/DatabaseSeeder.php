@@ -10,14 +10,19 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        $categories = Category::all();
+       $this->call(CategoriesTableSeeder::class);
 
-        Contact::truncate();
+        // カテゴリーが存在しない場合は終了
+        if (Category::count() === 0) {
+            return;
+        }
 
-        Contact::factory(35)->make()->each(function ($contact) use ($categories) {
-            $contact->category_id = $categories->random()->id;
-            $contact->save();
-        });
+        // メモリ対策で5件ずつ (合計35件) 作成
+        foreach (range(1, 7) as $i) {
+            Contact::factory(5)->create();
+        }
+
+
     }
 
 }

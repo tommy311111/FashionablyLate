@@ -5,6 +5,8 @@ namespace Database\Factories;
 use App\Models\Contact;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Factory as FakerFactory;
+
 
 class ContactFactory extends Factory
 {
@@ -12,16 +14,21 @@ class ContactFactory extends Factory
 
     public function definition()
     {
+        $faker = FakerFactory::create('ja_JP');
+
         return [
-            'first_name' => $this->faker->firstName,
-            'last_name' => $this->faker->lastName,
-            'gender' => $this->faker->randomElement(['male', 'female', 'other']),
-            'email' => $this->faker->unique()->safeEmail,
-            'tell' => substr($this->faker->phoneNumber, 0, 11),
-            'address' => $this->faker->address,
-            'building' => $this->faker->optional()->buildingNumber,
-            'detail' => substr($this->faker->sentence, 0, 120),
-            'category_id' => Category::inRandomOrder()->first()->id,
+        'first_name' => $faker->firstName,
+        'last_name' => $faker->lastName,
+        'gender' => $faker->randomElement(['male', 'female', 'other']),
+        'email' => $faker->unique()->safeEmail,
+        'tell' => $faker->randomElement(['070', '080', '090']) . $faker->numerify('#######'),
+        'address' => $faker->address,
+        'building' => $faker->optional(0.5)->buildingNumber,
+        'detail' => $faker->sentence(15), 
+        'category_id' => Category::exists()
+    ? Category::query()->inRandomOrder()->value('id')
+    : Category::factory()->create()->id,
+
         ];
     }
 }
