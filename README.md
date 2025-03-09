@@ -1,9 +1,9 @@
-お問い合わせフォーム
-環境構築
+# お問い合わせフォーム
+## 環境構築
 
 Dockerビルド
-1. git clone 
-2. docker-compose up -d—build
+1. git clone git@github.com:tommy311111/FashionablyLate.git
+2. docker-compose up -d --build
 
  Laravel環境構築
 1. docker-compose exec php bash
@@ -14,13 +14,13 @@ Dockerビルド
 6. php artisan db:seed
 
 使用技術
-- PHP 8.4.1
-- Laravel 8.83.29
+- PHP 7.4.9
+- Laravel 8.83.3
 - MyCQL 8.0.26
 
 ER図
 
- URL![er drawio](https://github.com/user-attachments/assets/baee3280-a075-44d6-beb8-5aafd9e1963d)
+
 
 
 - 開発環境：http://localhost/
